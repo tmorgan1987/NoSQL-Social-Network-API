@@ -1,0 +1,25 @@
+{
+  "name": "mern-server",
+  "version": "1.0.0",
+  "description": "Unit 18 Homework, NoSQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmorgan1987/NoSQL-Social-Network-API"
+  },
+  "homepage": "https://github.com/tmorgan1987/NoSQL-Social-Network-API"
+}
