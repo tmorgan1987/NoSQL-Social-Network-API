@@ -1,9 +1,9 @@
-const { user, thought } = require('../models');
+const { User } = require('../models');
 
 // let's get all users
-const userRoutes = {
+const userControls = {
 	getAllUsers(req, res) {
-		user.find()
+		User.find()
 		.select("-__v")
 		.then((userData) => {
 			res.json(userData);
@@ -16,7 +16,7 @@ const userRoutes = {
 
 	// let's get one user
 	getOneUser(req, res) {
-		user.findOne({ _id: req.params.userId})
+		User.findOne({ _id: req.params.userId})
 		.select("-__v")
 		.populate("friends")
 		.populate("thoughts")
@@ -34,7 +34,7 @@ const userRoutes = {
 
 	// create a user
 	newUser(req, res) {
-		user.create(req.body)
+		User.create(req.body)
 		.then((userData) => {
 			res.json(userData);
 		})
@@ -46,7 +46,7 @@ const userRoutes = {
 
 	// update user
 	updateUser(req, res) {
-		user.findOneAndUpdate(
+		User.findOneAndUpdate(
 			{ _id: req.params.userId},
 			{
 				$set: req.body,
@@ -70,7 +70,7 @@ const userRoutes = {
 
 	//delete user
 	deleteUser(req, res) {
-    user.findOneAndDelete({ _id: req.params.userId })
+    User.findOneAndDelete({ _id: req.params.userId })
       .then((userData) => {
         if (!userData) {
           return res.status(404).json({ message: "That user does not exist." });
@@ -87,7 +87,7 @@ const userRoutes = {
 
 	//add a friend
 	addFriend(req, res) {
-		user.findOneAndUpdate(
+		User.findOneAndUpdate(
 			{ _id: req.params.userId },
 			{ $addToSet: { friends: req.params.friendId }},
 			{ new: true},
@@ -124,4 +124,4 @@ const userRoutes = {
 	)},
 };
 
-module.exports = userRoutes;
+module.exports = userControls;
