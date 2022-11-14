@@ -1,6 +1,5 @@
 // done
 const { Schema, model, Types } = require("mongoose");
-const date = require("../utils/dateFormatting");
 
 const reactSchema = new Schema(
 	{
@@ -19,8 +18,11 @@ const reactSchema = new Schema(
 		created: {
 			type: Date,
 			default: Date.now,
-			get: (timestamp) => date(timestamp),
-		},
+			get: date => {
+				const todayDate = new Date(date);
+				return `${todayDate.getMonth()+1}-${todayDate.getDate()}-${todayDate.getFullYear()}`
+			}
+		}
 	},
 	{
 		toJSON: {
