@@ -128,4 +128,4 @@ const thoughtControls = {
 	},
 };
 
-mondule.exports = thoughtControls;
+module.exports = thoughtControls;
