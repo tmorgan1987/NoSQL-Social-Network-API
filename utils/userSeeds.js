@@ -1,4 +1,4 @@
-const { user } = require('../models');
+const { User } = require('../models');
 
 const userSeeds = [
 	{
@@ -16,8 +16,8 @@ const userSeeds = [
 ];
 
 const userSeeding = async () => {
-	await user.deleteMany({});
-	await user.insertMany(userSeeds);
+	await User.deleteMany({});
+	await User.insertMany(userSeeds);
 };
 
 module.exports = userSeeding;
